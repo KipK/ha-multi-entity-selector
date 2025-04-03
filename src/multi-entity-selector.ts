@@ -4,7 +4,22 @@ import { repeat } from 'lit/directives/repeat.js';
 import { mdiClose, mdiDrag, mdiPencil } from "@mdi/js";
 import { HomeAssistant } from '../global';
 import { EntityConfig, SchemaItem, RequestEditDetailEvent } from './types';
+import { loadHaComponents} from '@kipk/load-ha-components';
 
+const REQUIRED_HA_COMPONENTS = [
+    'ha-form',
+    'ha-icon-button',
+    'ha-entity-picker',
+    'ha-dialog',
+    'ha-sortable',
+    'ha-svg-icon',
+    'mwc-button'
+];
+
+// Load HA components when this module is imported
+loadHaComponents(REQUIRED_HA_COMPONENTS).catch(error => {
+  console.error('Failed to load Home Assistant components:', error);
+});
 export interface MultiEntitiesChangedEvent {
   entities: EntityConfig[]; // Emit the full config objects
 }
@@ -30,6 +45,15 @@ export class MultiEntitySelector extends LitElement {
       this._entityKeys.set(entityConf, Math.random().toString());
     }
     return this._entityKeys.get(entityConf)!;
+  }
+
+  override async firstUpdated(): Promise<void> {
+    // Load HA components when the element is first updated
+    try {
+      await loadHaComponents(REQUIRED_HA_COMPONENTS);
+    } catch (error) {
+      console.error('Error loading ha-components:', error);
+    }
   }
 
   // Use willUpdate to process incoming config changes from the 'entities' property
