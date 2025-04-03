@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi Entity Selector Demo</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+      color: #212121;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    
+    h1 {
+      color: #03a9f4;
+    }
+    
+    pre {
+      background-color: #f0f0f0;
+      padding: 12px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+    
+    button {
+      background-color: #03a9f4;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    button:hover {
+      background-color: #0288d1;
+    }
+    
+    .output {
+      margin-top: 16px;
+      padding: 12px;
+      background-color: #f0f0f0;
+      border-radius: 4px;
+      min-height: 100px;
+    }
+    
+    /* Home Assistant theme variables for the component */
+    :root {
+      --primary-text-color: #212121;
+      --secondary-text-color: #727272;
+      --primary-color: #03a9f4;
+      --error-color: #db4437;
+      --paper-item-icon-color: #44739e;
+      --disabled-text-color: #bdbdbd;
+      --divider-color: rgba(0, 0, 0, .12);
+    }
+  </style>
+  <!-- Import the component -->
+  <script type="module" src="../dist/ha-multi-entity-selector.js"></script>
+  
+  <!-- Mock Home Assistant for demo purposes -->
+  <script>
+    // Create a mock Home Assistant object
+    window.mockHass = {
+      states: {
+        'light.living_room': {
+          entity_id: 'light.living_room',
+          state: 'on',
+          attributes: {
+            friendly_name: 'Living Room Light',
+            brightness: 255
+          }
+        },
+        'light.kitchen': {
+          entity_id: 'light.kitchen',
+          state: 'off',
+          attributes: {
+            friendly_name: 'Kitchen Light'
+          }
+        },
+        'switch.tv': {
+          entity_id: 'switch.tv',
+          state: 'off',
+          attributes: {
+            friendly_name: 'TV'
+          }
+        },
+        'sensor.temperature': {
+          entity_id: 'sensor.temperature',
+          state: '22.5',
+          attributes: {
+            friendly_name: 'Temperature',
+            unit_of_measurement: '°C'
+          }
+        },
+        'climate.living_room': {
+          entity_id: 'climate.living_room',
+          state: 'heat',
+          attributes: {
+            friendly_name: 'Living Room Thermostat',
+            current_temperature: 21,
+            temperature: 22
+          }
+        }
+      },
+      callService: (domain, service, data) => {
+        console.log('Service called:', domain, service, data);
+        return Promise.resolve();
+      },
+      callWS: (msg) => {
+        console.log('WebSocket call:', msg);
+        return Promise.resolve({});
+      },
+      formatEntityState: (entity) => {
+        return entity.state;
+      },
+      language: 'en'
+    };
+    
+    // Mock the customElements.whenDefined method
+    if (!window.customElements.whenDefined) {
+      window.customElements.whenDefined = (name) => Promise.resolve();
+    }
+    
+    // Mock the customElements.get method if needed
+    const originalGet = window.customElements.get;
+    window.customElements.get = (name) => {
+      // Return true for HA components to bypass loading
+      if (name.startsWith('ha-') || name === 'mwc-button') {
+        return true;
+      }
+      return originalGet.call(window.customElements, name);
+    };
+  </script>
+</head>
+<body>
+  <h1>Multi Entity Selector Demo</h1>
+  
+  <div class="card">
+    <h2>Basic Usage</h2>
+    <p>This demonstrates the basic functionality of the multi-entity-selector component.</p>
+    
+    <multi-entity-selector id="basic-demo" label="Select Entities"></multi-entity-selector>
+    
+    <div class="output" id="basic-output">
+      <em>No entities selected yet</em>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h2>Pre-populated Entities</h2>
+    <p>This demonstrates the component with pre-populated entities.</p>
+    
+    <multi-entity-selector id="prepopulated-demo" label="My Entities"></multi-entity-selector>
+    
+    <div class="output" id="prepopulated-output">
+      <em>Loading entities...</em>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h2>Usage Instructions</h2>
+    <p>To use this component in your Home Assistant custom card:</p>
+    
+    <pre>
+import { MultiEntitySelector } from 'ha-multi-entity-selector';
+
+// The component will be automatically registered as 'multi-entity-selector'
+
+// In your render method:
+render() {
+  return html`
+    &lt;multi-entity-selector
+      .hass=${this.hass}
+      .entities=${this.config.entities || []}
+      label="Select Entities"
+      @entities-changed=${this._entitiesChanged}
+    &gt;&lt;/multi-entity-selector&gt;
+  `;
+}
+
+// Handle changes
+_entitiesChanged(ev) {
+  const entities = ev.detail.entities;
+  // Do something with the updated entities
+  console.log('Entities updated:', entities);
+}
+    </pre>
+  </div>
+  
+  <script type="module">
+    // Initialize the demos when the component is defined
+    customElements.whenDefined('multi-entity-selector').then(() => {
+      // Basic demo
+      const basicDemo = document.getElementById('basic-demo');
+      const basicOutput = document.getElementById('basic-output');
+      
+      // Set the mock hass object
+      basicDemo.hass = window.mockHass;
+      
+      // Listen for changes
+      basicDemo.addEventListener('entities-changed', (ev) => {
+        basicOutput.innerHTML = `<pre>${JSON.stringify(ev.detail.entities, null, 2)}</pre>`;
+      });
+      
+      // Pre-populated demo
+      const prepopulatedDemo = document.getElementById('prepopulated-demo');
+      const prepopulatedOutput = document.getElementById('prepopulated-output');
+      
+      // Set the mock hass object
+      prepopulatedDemo.hass = window.mockHass;
+      
+      // Set initial entities
+      prepopulatedDemo.entities = [
+        'light.living_room',
+        { entity: 'light.kitchen', name: 'Kitchen', icon: 'mdi:ceiling-light' },
+        'sensor.temperature'
+      ];
+      
+      // Listen for changes
+      prepopulatedDemo.addEventListener('entities-changed', (ev) => {
+        prepopulatedOutput.innerHTML = `<pre>${JSON.stringify(ev.detail.entities, null, 2)}</pre>`;
+      });
+      
+      // Trigger initial output update
+      prepopulatedOutput.innerHTML = `<pre>${JSON.stringify(prepopulatedDemo.entities.map(e => 
+        typeof e === 'string' ? { entity: e } : e
+      ), null, 2)}</pre>`;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{
+  "name": "ha-multi-entity-selector",
+  "version": "1.0.0",
+  "description": "A Home Assistant multi-entity selector component for custom cards",
+  "main": "dist/ha-multi-entity-selector.js",
+  "module": "dist/ha-multi-entity-selector.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && rollup -c",
+    "build:watch": "tsc --watch",
+    "lint": "eslint \"src/**/*.ts\"",
+    "format": "prettier \"**/*.{cjs,html,js,json,md,ts}\" --write",
+    "start": "web-dev-server --node-resolve --open demo/ --watch"
+  },
+  "keywords": [
+    "home-assistant",
+    "web-components",
+    "lit-element",
+    "typescript",
+    "lit",
+    "custom-card",
+    "entity-selector"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@mdi/js": "^7.4.47",
+    "lit": "^3.2.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@typescript-eslint/eslint-plugin": "^8.28.0",
+    "@web/dev-server": "^0.4.1",
+    "eslint": "^8.15.0",
+    "eslint-plugin-lit": "^2.0.0",
+    "prettier": "^2.6.2",
+    "rollup": "^4.36.0",
+    "rollup-plugin-summary": "^2.0.1",
+    "typescript": "~5.5.0"
+  },
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
