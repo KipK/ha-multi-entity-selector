@@ -28,7 +28,7 @@
     "src/"
   ],
   "scripts": {
-    "build": "tsc && rollup -c",
+    "build": "tsc && rollup -c && cp tmp/*.d.ts dist/",
     "build:watch": "tsc --watch",
     "lint": "eslint \"src/**/*.ts\"",
     "format": "prettier \"**/*.{cjs,html,js,json,md,ts}\" --write",
@@ -38,10 +38,12 @@
     "@mdi/js": "^7.4.47",
     "lit": "^3.2.1",
     "node.js": "^0.0.1-security",
-    "npmrc": "^1.1.1"
+    "npmrc": "^1.1.1",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-replace": "^6.0.2",
     "@rollup/plugin-terser": "^0.4.4",
     "@typescript-eslint/eslint-plugin": "^8.28.0",
     "@web/dev-server": "^0.4.1",
@@ -55,5 +57,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "module": "dist/ha-multi-entity-selector.js"
+  "module": "dist/ha-multi-entity-selector.js",
+  "types": "dist/index.d.ts"
 }

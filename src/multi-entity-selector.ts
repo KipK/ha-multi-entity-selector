@@ -3,7 +3,7 @@ import { customElement, property, state } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
 import { mdiClose, mdiDrag, mdiPencil } from "@mdi/js";
 import { HomeAssistant } from '../global';
-import { EntityConfig, SchemaItem, MultiEntitiesChangedEvent } from './types';
+import { EntityConfig, SchemaItem, MultiEntitiesChangedEvent, RequestEditDetailEvent } from './types';
 
 @customElement('multi-entity-selector')
 export class MultiEntitySelector extends LitElement {
@@ -13,7 +13,7 @@ export class MultiEntitySelector extends LitElement {
   @property() public label?: string; // Optional label for the component
 
   @state() private _entities: EntityConfig[] = []; // Internal state using EntityConfig
-  
+
   // State for the edit dialog
   @state() private _editDialogOpen = false;
   @state() private _editingEntityIndex: number | null = null;
@@ -121,7 +121,7 @@ export class MultiEntitySelector extends LitElement {
           <div class="dialog-content">
             <ha-form
               .hass=${this.hass}
-              .data=${this._editingEntityData ?? {}} 
+              .data=${this._editingEntityData ?? {}}
               .schema=${this._getEditDialogSchema()}
               .computeLabel=${(schema: SchemaItem) => schema.label || schema.name}
               @value-changed=${this._handleEditDialogValueChanged}
@@ -343,5 +343,9 @@ export class MultiEntitySelector extends LitElement {
 declare global {
   interface HTMLElementTagNameMap {
     'multi-entity-selector': MultiEntitySelector;
+  }
+  interface HASSDomEvents {
+    "entities-changed": MultiEntitiesChangedEvent;
+    "request-edit-detail": RequestEditDetailEvent; // Add the new event
   }
 }
