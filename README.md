@@ -3,6 +3,9 @@
 A reusable web component for selecting and managing multiple entities in Home Assistant custom cards.
 It mimics the "entities" home-assistant card configuration screen.
 
+![image](https://github.com/user-attachments/assets/6d4d58de-0ccf-46d5-bdc5-2c9dcaf33a7b)
+
+
 ## Features
 
 - Select multiple Home Assistant entities with a user-friendly interface
