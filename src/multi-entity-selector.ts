@@ -3,7 +3,11 @@ import { customElement, property, state } from 'lit/decorators.js';
 import { repeat } from 'lit/directives/repeat.js';
 import { mdiClose, mdiDrag, mdiPencil } from "@mdi/js";
 import { HomeAssistant } from '../global';
-import { EntityConfig, SchemaItem, MultiEntitiesChangedEvent, RequestEditDetailEvent } from './types';
+import { EntityConfig, SchemaItem, RequestEditDetailEvent } from './types';
+
+export interface MultiEntitiesChangedEvent {
+  entities: EntityConfig[]; // Emit the full config objects
+}
 
 @customElement('multi-entity-selector')
 export class MultiEntitySelector extends LitElement {
@@ -346,6 +350,6 @@ declare global {
   }
   interface HASSDomEvents {
     "entities-changed": MultiEntitiesChangedEvent;
-    "request-edit-detail": RequestEditDetailEvent; // Add the new event
+    "request-edit-detail": RequestEditDetailEvent;
   }
 }

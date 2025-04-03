@@ -14,3 +14,8 @@ declare global {
     'multi-entity-selector': MultiEntitySelector;
   }
 }
+
+// This comment ensures TypeScript knows this module is used
+// even if the imported class is not directly referenced
+// @ts-ignore
+const _ensure_import_is_used = MultiEntitySelector;
