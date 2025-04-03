@@ -1,17 +1,7 @@
 {
-  "name": "ha-multi-entity-selector",
+  "name": "@kipk/ha-multi-entity-selector",
   "version": "0.0.1",
   "description": "A Home Assistant multi-entity selector component for custom cards",
-  "main": "dist/ha-multi-entity-selector.js",
-  "module": "dist/ha-multi-entity-selector.js",
-  "type": "module",
-  "scripts": {
-    "build": "tsc && rollup -c",
-    "build:watch": "tsc --watch",
-    "lint": "eslint \"src/**/*.ts\"",
-    "format": "prettier \"**/*.{cjs,html,js,json,md,ts}\" --write",
-    "start": "web-dev-server --node-resolve --open demo/ --watch"
-  },
   "keywords": [
     "home-assistant",
     "web-components",
@@ -21,8 +11,29 @@
     "custom-card",
     "entity-selector"
   ],
-  "author": "KipK",
+  "homepage": "https://github.com/KipK/ha-multi-entity-selector#readme",
+  "bugs": {
+    "url": "https://github.com/KipK/ha-multi-entity-selector/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KipK/ha-multi-entity-selector.git"
+  },
   "license": "MIT",
+  "author": "KipK",
+  "type": "module",
+  "main": "dist/ha-multi-entity-selector.js",
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "scripts": {
+    "build": "tsc && rollup -c",
+    "build:watch": "tsc --watch",
+    "lint": "eslint \"src/**/*.ts\"",
+    "format": "prettier \"**/*.{cjs,html,js,json,md,ts}\" --write",
+    "start": "web-dev-server --node-resolve --open demo/ --watch"
+  },
   "dependencies": {
     "@mdi/js": "^7.4.47",
     "lit": "^3.2.1",
@@ -41,19 +52,8 @@
     "rollup-plugin-summary": "^2.0.1",
     "typescript": "~5.5.0"
   },
-  "files": [
-    "dist/",
-    "src/"
-  ],
   "publishConfig": {
     "access": "public"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KipK/ha-multi-entity-selector.git"
-  },
-  "bugs": {
-    "url": "https://github.com/KipK/ha-multi-entity-selector/issues"
-  },
-  "homepage": "https://github.com/KipK/ha-multi-entity-selector#readme"
+  "module": "dist/ha-multi-entity-selector.js"
 }
