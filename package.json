@@ -1,6 +1,6 @@
 {
   "name": "ha-multi-entity-selector",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A Home Assistant multi-entity selector component for custom cards",
   "main": "dist/ha-multi-entity-selector.js",
   "module": "dist/ha-multi-entity-selector.js",
@@ -21,7 +21,7 @@
     "custom-card",
     "entity-selector"
   ],
-  "author": "",
+  "author": "KipK",
   "license": "MIT",
   "dependencies": {
     "@mdi/js": "^7.4.47",
@@ -47,5 +47,13 @@
   ],
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KipK/ha-multi-entity-selector.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KipK/ha-multi-entity-selector/issues"
+  },
+  "homepage": "https://github.com/KipK/ha-multi-entity-selector#readme"
 }
