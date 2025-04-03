@@ -1,6 +1,7 @@
 # Home Assistant Multi-Entity Selector
 
 A reusable web component for selecting and managing multiple entities in Home Assistant custom cards.
+It mimics the "entities" home-assistant card configuration screen.
 
 ## Features
 
@@ -61,10 +62,10 @@ const entities = [
 // Advanced format with additional configuration
 const entitiesWithConfig = [
   'light.living_room',
-  { 
-    entity: 'switch.tv', 
-    name: 'Television', 
-    icon: 'mdi:television' 
+  {
+    entity: 'switch.tv',
+    name: 'Television',
+    icon: 'mdi:television'
   },
   'sensor.temperature'
 ];
