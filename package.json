@@ -29,7 +29,7 @@
     "ha-multi-entity-selector.d.ts"
   ],
   "scripts": {
-    "build": "tsc && rollup -c && cp tmp/*.d.ts dist/",
+    "build": "tsc && rollup -c",
     "build:watch": "tsc --watch",
     "lint": "eslint \"src/**/*.ts\"",
     "format": "prettier \"**/*.{cjs,html,js,json,md,ts}\" --write",

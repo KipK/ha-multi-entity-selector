@@ -152,21 +152,19 @@ type MwcButton = HTMLElement & {
     trailingIcon?: boolean;
 };
 
-declare global {
-    interface HTMLElementTagNameMap {
-        'ha-card': HaCard;
-        'ha-icon': HaIcon;
-        'ha-form': HaForm;
-        'ha-icon-button': HaIconButton;
-        'ha-entity-picker': HaEntityPicker;
-        'ha-dialog': HaDialog;
-        'ha-sortable': HaSortable;
-        'ha-svg-icon': HaSvgIcon;
-        'ha-alert': HaAlert;
-        'ha-selector': HaSelector;
-        'ha-icon-picker': HaIconPicker;
-        'ha-select': HaSelect;
-        'ha-textfield': HaTextfield;
-        'mwc-button': MwcButton;
-    }
+interface HTMLElementTagNameMap {
+    'ha-card': HaCard;
+    'ha-icon': HaIcon;
+    'ha-form': HaForm;
+    'ha-icon-button': HaIconButton;
+    'ha-entity-picker': HaEntityPicker;
+    'ha-dialog': HaDialog;
+    'ha-sortable': HaSortable;
+    'ha-svg-icon': HaSvgIcon;
+    'ha-alert': HaAlert;
+    'ha-selector': HaSelector;
+    'ha-icon-picker': HaIconPicker;
+    'ha-select': HaSelect;
+    'ha-textfield': HaTextfield;
+    'mwc-button': MwcButton;
 }
