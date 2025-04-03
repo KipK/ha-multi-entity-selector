@@ -15,7 +15,7 @@ It mimics the "entities" home-assistant card configuration screen.
 ## Installation
 
 ```bash
-npm install ha-multi-entity-selector
+npm i @kipk/ha-multi-entity-selector
 ```
 
 ## Usage
