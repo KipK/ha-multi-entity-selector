@@ -12,8 +12,7 @@ const REQUIRED_HA_COMPONENTS = [
     'ha-entity-picker',
     'ha-dialog',
     'ha-sortable',
-    'ha-svg-icon',
-    'mwc-button'
+    'ha-svg-icon'
 ];
 
 // Load HA components when this module is imported
@@ -155,19 +154,19 @@ export class MultiEntitySelector extends LitElement {
               @value-changed=${this._handleEditDialogValueChanged}
             ></ha-form>
           </div>
-          <mwc-button
+          <button
             slot="secondaryAction"
             @click=${this._closeEditDialog}
           >
             Cancel
-          </mwc-button>
-          <mwc-button
+          </button>
+          <button
             slot="primaryAction"
             @click=${this._saveEditDialog}
-            .disabled=${!this._editingEntityData}
+            ?disabled=${!this._editingEntityData}
           >
             Save
-          </mwc-button>
+          </button>
         </ha-dialog>
       ` : ''}
     `;
@@ -363,6 +362,39 @@ export class MultiEntitySelector extends LitElement {
         margin-bottom: 8px;
         font-size: 1rem;
         color: var(--primary-text-color);
+    }
+
+    /* Dialog button styling */
+    ha-dialog::part(secondaryAction) {
+        --mdc-theme-primary: var(--primary-color);
+    }
+    ha-dialog::part(primaryAction) {
+        --mdc-theme-primary: var(--primary-color);
+    }
+    ha-dialog button {
+        background-color: var(--primary-color);
+        color: var(--text-primary-color);
+        border: none;
+        border-radius: 4px;
+        padding: 8px 16px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    ha-dialog button:hover:not(:disabled) {
+        background-color: var(--dark-primary-color);
+    }
+    ha-dialog button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background-color: var(--disabled-color, #ccc);
+    }
+    ha-dialog button[slot="secondaryAction"] {
+        background-color: var(--secondary-background-color);
+        color: var(--primary-text-color);
+    }
+    ha-dialog button[slot="secondaryAction"]:hover:not(:disabled) {
+        background-color: var(--dark-secondary-background-color);
     }
   `;
 }

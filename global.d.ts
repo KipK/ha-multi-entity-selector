@@ -141,16 +141,6 @@ type HaAlert = HTMLElement & {
     dismissable?: boolean;
 };
 
-type MwcButton = HTMLElement & {
-    raised?: boolean;
-    unelevated?: boolean;
-    outlined?: boolean;
-    dense?: boolean;
-    disabled?: boolean;
-    icon?: string;
-    label?: string;
-    trailingIcon?: boolean;
-};
 
 interface HTMLElementTagNameMap {
     'ha-card': HaCard;
@@ -166,5 +156,4 @@ interface HTMLElementTagNameMap {
     'ha-icon-picker': HaIconPicker;
     'ha-select': HaSelect;
     'ha-textfield': HaTextfield;
-    'mwc-button': MwcButton;
 }

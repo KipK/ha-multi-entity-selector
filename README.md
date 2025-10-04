@@ -123,7 +123,6 @@ This component requires the following Home Assistant components to be available:
 - ha-dialog
 - ha-sortable
 - ha-svg-icon
-- mwc-button
 
 These components are automatically loaded by the package when used in a Home Assistant environment.
 
