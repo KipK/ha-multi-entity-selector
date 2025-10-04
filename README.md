@@ -8,7 +8,7 @@ It mimics the "entities" home-assistant card configuration screen.
 
 ## Features
 
-- Select multiple Home Assistant entities with a user-friendly interface
+- Select multiple Home Assistant entities
 - Drag and drop reordering of entities
 - Edit entity display names and icons
 - Prevent duplicate entity selections
