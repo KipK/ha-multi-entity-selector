@@ -106,7 +106,7 @@ export class MultiEntitySelector extends LitElement {
                           .index=${index}
                           @value-changed=${this._entityValueChanged}
                         ></ha-entity-picker>
-                        ${entityConf.name || entityConf.icon ? html`<span class="secondary">(${entityConf.name ? `Name: ${entityConf.name}` : ''}${entityConf.name && entityConf.icon ? ', ' : ''}${entityConf.icon ? `Icon: ${entityConf.icon}` : ''})</span>` : ''}
+                        ${entityConf.name || entityConf.icon ? html`<span class="secondary">(${entityConf.name ? `${this.hass.localize('ui.common.name')}: ${entityConf.name}` : ''}${entityConf.name && entityConf.icon ? ', ' : ''}${entityConf.icon ? `${this.hass.localize('ui.panel.lovelace.editor.card.generic.icon')}: ${entityConf.icon}` : ''})</span>` : ''}
                       `
                     : html`
                         <!-- Placeholder for special row types if needed later -->
@@ -115,14 +115,14 @@ export class MultiEntitySelector extends LitElement {
                   }
                 </div>
                 <ha-icon-button
-                  label="Edit"
+                  label=${this.hass.localize('ui.common.edit')}
                   .path=${mdiPencil}
                   class="edit-icon"
                   .index=${index}
                   @click=${this._editRow}
                 ></ha-icon-button>
                 <ha-icon-button
-                  label="Remove"
+                  label=${this.hass.localize('ui.common.remove')}
                   .path=${mdiClose}
                   class="remove-icon"
                   .index=${index}
@@ -144,7 +144,7 @@ export class MultiEntitySelector extends LitElement {
         <ha-dialog
           open
           @closed=${this._closeEditDialog}
-          .heading=${"Edit Entity"}
+          .heading=${this.hass.localize('ui.dialogs.entity_registry.editor.edit')}
         >
           <div class="dialog-content">
             <ha-form
@@ -161,7 +161,7 @@ export class MultiEntitySelector extends LitElement {
             appearance="plain"
             @click=${this._closeEditDialog}
           >
-          ${"Cancel"}
+          ${this.hass.localize('ui.common.cancel')}
           </ha-button>
           <ha-button
             slot="primaryAction"
@@ -169,7 +169,7 @@ export class MultiEntitySelector extends LitElement {
             @click=${this._saveEditDialog}
             ?disabled=${!this._editingEntityData}
           >
-          ${"Save"}
+          ${this.hass.localize('ui.common.save')}
           </ha-button>
         </ha-dialog>
       ` : ''}
@@ -291,8 +291,8 @@ export class MultiEntitySelector extends LitElement {
   private _getEditDialogSchema(): SchemaItem[] {
     // Use optional: true for name and icon as they might not be set
     return [
-      { name: "name", selector: { text: {} }, label: "Name" },
-      { name: "icon", selector: { icon: {} }, label: "Icon" },
+      { name: "name", selector: { text: {} }, label: this.hass.localize('ui.common.name') },
+      { name: "icon", selector: { icon: {} }, label: this.hass.localize('ui.panel.lovelace.editor.card.generic.icon') },
       // Entity ID is not editable here
     ];
   }

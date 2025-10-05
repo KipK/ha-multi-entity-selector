@@ -8,6 +8,7 @@ export interface HomeAssistant {
   formatEntityState: (entity: HassEntity) => string;
   language: string;
   entities?: Record<string, RegistryEntity>;
+  localize: (key: string, ...args: any[]) => string;
 }
 
 // Define a basic HassEntity interface
