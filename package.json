@@ -1,6 +1,6 @@
 {
   "name": "@kipk/ha-multi-entity-selector",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A Home Assistant multi-entity selector component for custom cards",
   "keywords": [
     "home-assistant",
