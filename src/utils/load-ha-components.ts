@@ -43,7 +43,8 @@ const REQUIRED_HA_COMPONENTS = [
     'ha-entity-picker',
     'ha-dialog',
     'ha-sortable',
-    'ha-svg-icon'
+    'ha-svg-icon',
+    'ha-button'
 ];
 
 export const loadHaComponents = async (): Promise<void> => {
