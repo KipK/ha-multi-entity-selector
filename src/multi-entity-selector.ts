@@ -158,15 +158,15 @@ export class MultiEntitySelector extends LitElement {
           <ha-button
             slot="secondaryAction"
             @click=${this._closeEditDialog}
-            .label=${"Cancel"}
           >
+          ${"Cancel"}
           </ha-button>
           <ha-button
             slot="primaryAction"
             @click=${this._saveEditDialog}
             ?disabled=${!this._editingEntityData}
-            .label=${"Save"}
           >
+          ${"Save"}
           </ha-button>
         </ha-dialog>
       ` : ''}
