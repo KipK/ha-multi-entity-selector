@@ -39,23 +39,23 @@
   "dependencies": {
     "@kipk/load-ha-components": "^1.0.3",
     "@mdi/js": "^7.4.47",
-    "lit": "^3.2.1",
+    "lit": "^3.3.3",
     "node.js": "^0.0.1-security",
     "npmrc": "^1.1.1",
     "yarn": "^1.22.22"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-replace": "^6.0.2",
-    "@rollup/plugin-terser": "^0.4.4",
-    "@typescript-eslint/eslint-plugin": "^8.28.0",
-    "@web/dev-server": "^0.4.1",
-    "eslint": "^8.15.0",
-    "eslint-plugin-lit": "^2.0.0",
-    "prettier": "^2.6.2",
-    "rollup": "^4.36.0",
-    "rollup-plugin-summary": "^2.0.1",
-    "typescript": "~5.5.0"
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-replace": "^6.0.3",
+    "@rollup/plugin-terser": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.59.3",
+    "@web/dev-server": "^0.4.6",
+    "eslint": "^10.3.0",
+    "eslint-plugin-lit": "^2.3.1",
+    "prettier": "^3.8.3",
+    "rollup": "^4.60.3",
+    "rollup-plugin-summary": "^3.0.1",
+    "typescript": "~6.0.3"
   },
   "publishConfig": {
     "access": "public"

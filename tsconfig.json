@@ -2,7 +2,11 @@
   "compilerOptions": {
     "target": "es2021",
     "module": "esnext",
-    "lib": ["es2021", "DOM", "DOM.Iterable"],
+    "lib": [
+      "es2021",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
@@ -16,7 +20,7 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
@@ -34,6 +38,9 @@
       }
     ]
   },
-  "include": ["src/**/*.ts", "global.d.ts"],
+  "include": [
+    "src/**/*.ts",
+    "global.d.ts"
+  ],
   "exclude": []
 }
