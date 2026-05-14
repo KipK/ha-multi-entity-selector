@@ -11,6 +11,7 @@ const REQUIRED_HA_COMPONENTS = [
     'ha-icon-button',
     'ha-entity-picker',
     'ha-dialog',
+    'ha-dialog-footer',
     'ha-sortable',
     'ha-svg-icon',
     'ha-button'
@@ -155,22 +156,25 @@ export class MultiEntitySelector extends LitElement {
               @value-changed=${this._handleEditDialogValueChanged}
             ></ha-form>
           </div>
-          <ha-button
-            slot="secondaryAction"
-            size="small"
-            appearance="plain"
-            @click=${this._closeEditDialog}
-          >
-          ${this.hass.localize('ui.common.cancel')}
-          </ha-button>
-          <ha-button
-            slot="primaryAction"
-            size="small"
-            @click=${this._saveEditDialog}
-            ?disabled=${!this._editingEntityData}
-          >
-          ${this.hass.localize('ui.common.save')}
-          </ha-button>
+          <ha-dialog-footer slot="footer">
+            <ha-button
+              slot="secondaryAction"
+              size="small"
+              appearance="plain"
+              @click=${this._closeEditDialog}
+            >
+            ${this.hass.localize('ui.common.cancel')}
+            </ha-button>
+            <ha-button
+              slot="primaryAction"
+              size="small"
+              appearance="filled"
+              @click=${this._saveEditDialog}
+              ?disabled=${!this._editingEntityData}
+            >
+            ${this.hass.localize('ui.common.save')}
+            </ha-button>
+          </ha-dialog-footer>
         </ha-dialog>
       ` : ''}
     `;

@@ -91,6 +91,9 @@ interface HaDialog extends LitElement {
     hideActions?: boolean;
 }
 
+interface HaDialogFooter extends LitElement {
+}
+
 interface HaSortable extends LitElement {
     handleSelector?: string;
 }
@@ -150,6 +153,7 @@ interface HTMLElementTagNameMap {
     'ha-icon-button': HaIconButton;
     'ha-entity-picker': HaEntityPicker;
     'ha-dialog': HaDialog;
+    'ha-dialog-footer': HaDialogFooter;
     'ha-sortable': HaSortable;
     'ha-svg-icon': HaSvgIcon;
     'ha-alert': HaAlert;
